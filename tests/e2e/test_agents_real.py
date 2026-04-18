@@ -1,6 +1,16 @@
 """Real end-to-end tests that validate roundtable opinion functionality."""
 import pytest
 import asyncio
+import os
+
+
+def get_enabled_agents():
+    """Get list of enabled agents from MCP configuration."""
+    subagents_env = os.getenv("CLI_MCP_SUBAGENTS")
+    if subagents_env:
+        return [s.strip().lower() for s in subagents_env.split(",") if s.strip()]
+    # Default: all agents enabled if not specified
+    return ["codex", "claude", "cursor", "gemini", "qwen", "kiro", "copilot", "grok", "kilocode", "crush", "opencode", "factory", "rovo"]
 
 
 @pytest.mark.e2e
@@ -17,6 +27,9 @@ class TestAgentsReal:
 
     async def test_claude_gives_opinion(self, test_project_path):
         """Test Claude gives opinion on a proposal."""
+        if "claude" not in get_enabled_agents():
+            pytest.skip("Claude not enabled in MCP config")
+            
         from roundtable_mcp_server.cli_subagent import claude_subagent, check_claude_availability
         
         availability = await check_claude_availability()
@@ -33,6 +46,9 @@ class TestAgentsReal:
 
     async def test_gemini_gives_opinion(self, test_project_path):
         """Test Gemini gives opinion on a proposal."""
+        if "gemini" not in get_enabled_agents():
+            pytest.skip("Gemini not enabled in MCP config")
+            
         from roundtable_mcp_server.cli_subagent import gemini_subagent, check_gemini_availability
         
         availability = await check_gemini_availability()
@@ -49,6 +65,9 @@ class TestAgentsReal:
 
     async def test_codex_gives_opinion(self, test_project_path):
         """Test Codex gives opinion on a proposal."""
+        if "codex" not in get_enabled_agents():
+            pytest.skip("Codex not enabled in MCP config")
+            
         from roundtable_mcp_server.cli_subagent import codex_subagent, check_codex_availability
         
         availability = await check_codex_availability()
@@ -65,6 +84,9 @@ class TestAgentsReal:
 
     async def test_qwen_gives_opinion(self, test_project_path):
         """Test Qwen gives opinion on a proposal."""
+        if "qwen" not in get_enabled_agents():
+            pytest.skip("Qwen not enabled in MCP config")
+            
         from roundtable_mcp_server.cli_subagent import qwen_subagent, check_qwen_availability
         
         availability = await check_qwen_availability()
@@ -81,6 +103,9 @@ class TestAgentsReal:
 
     async def test_kiro_gives_opinion(self, test_project_path):
         """Test Kiro gives opinion on a proposal."""
+        if "kiro" not in get_enabled_agents():
+            pytest.skip("Kiro not enabled in MCP config")
+            
         from roundtable_mcp_server.cli_subagent import kiro_subagent, check_kiro_availability
         
         availability = await check_kiro_availability()
@@ -97,6 +122,9 @@ class TestAgentsReal:
 
     async def test_cursor_gives_opinion(self, test_project_path):
         """Test Cursor gives opinion on a proposal."""
+        if "cursor" not in get_enabled_agents():
+            pytest.skip("Cursor not enabled in MCP config")
+            
         from roundtable_mcp_server.cli_subagent import cursor_subagent, check_cursor_availability
         
         availability = await check_cursor_availability()
@@ -113,6 +141,9 @@ class TestAgentsReal:
 
     async def test_copilot_gives_opinion(self, test_project_path):
         """Test Copilot gives opinion on a proposal."""
+        if "copilot" not in get_enabled_agents():
+            pytest.skip("Copilot not enabled in MCP config")
+            
         from roundtable_mcp_server.cli_subagent import copilot_subagent, check_copilot_availability
         
         availability = await check_copilot_availability()
@@ -129,6 +160,9 @@ class TestAgentsReal:
 
     async def test_grok_gives_opinion(self, test_project_path):
         """Test Grok gives opinion on a proposal."""
+        if "grok" not in get_enabled_agents():
+            pytest.skip("Grok not enabled in MCP config")
+            
         from roundtable_mcp_server.cli_subagent import grok_subagent, check_grok_availability
         
         availability = await check_grok_availability()
@@ -145,6 +179,9 @@ class TestAgentsReal:
 
     async def test_kilocode_gives_opinion(self, test_project_path):
         """Test Kilocode gives opinion on a proposal."""
+        if "kilocode" not in get_enabled_agents():
+            pytest.skip("Kilocode not enabled in MCP config")
+            
         from roundtable_mcp_server.cli_subagent import kilocode_subagent, check_kilocode_availability
         
         availability = await check_kilocode_availability()
@@ -161,6 +198,9 @@ class TestAgentsReal:
 
     async def test_crush_gives_opinion(self, test_project_path):
         """Test Crush gives opinion on a proposal."""
+        if "crush" not in get_enabled_agents():
+            pytest.skip("Crush not enabled in MCP config")
+            
         from roundtable_mcp_server.cli_subagent import crush_subagent, check_crush_availability
         
         availability = await check_crush_availability()
@@ -177,6 +217,9 @@ class TestAgentsReal:
 
     async def test_opencode_gives_opinion(self, test_project_path):
         """Test OpenCode gives opinion on a proposal."""
+        if "opencode" not in get_enabled_agents():
+            pytest.skip("OpenCode not enabled in MCP config")
+            
         from roundtable_mcp_server.cli_subagent import opencode_subagent, check_opencode_availability
         
         availability = await check_opencode_availability()
@@ -193,6 +236,9 @@ class TestAgentsReal:
 
     async def test_factory_gives_opinion(self, test_project_path):
         """Test Factory gives opinion on a proposal."""
+        if "factory" not in get_enabled_agents():
+            pytest.skip("Factory not enabled in MCP config")
+            
         from roundtable_mcp_server.cli_subagent import factory_subagent, check_factory_availability
         
         availability = await check_factory_availability()
@@ -209,6 +255,9 @@ class TestAgentsReal:
 
     async def test_rovo_gives_opinion(self, test_project_path):
         """Test Rovo gives opinion on a proposal."""
+        if "rovo" not in get_enabled_agents():
+            pytest.skip("Rovo not enabled in MCP config")
+            
         from roundtable_mcp_server.cli_subagent import rovo_subagent, check_rovo_availability
         
         availability = await check_rovo_availability()

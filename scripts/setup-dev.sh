@@ -7,7 +7,7 @@ echo "🔧 Setting up Roundtable AI development environment..."
 
 # Install package in editable mode with dev dependencies
 echo "📦 Installing package with dev dependencies..."
-pip install -e ".[dev]"
+uv pip install -e ".[dev]"
 
 # Install pre-commit hooks (optional)
 if command -v pre-commit &> /dev/null; then

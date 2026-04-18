@@ -94,7 +94,7 @@ fi
 
 # Install build dependencies if not present
 echo -e "${BLUE}📥 Installing build dependencies...${NC}"
-pip install --upgrade build twine toml
+uv pip install --upgrade build twine toml
 
 # Clean previous builds
 echo -e "${BLUE}🧹 Cleaning previous builds...${NC}"

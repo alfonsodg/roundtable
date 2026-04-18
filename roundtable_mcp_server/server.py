@@ -581,6 +581,22 @@ async def _execute_rovo_with_error_handling(instruction: str, project_path: str,
     return f"**Rovo Dev:**\n{agent_responses[0]}" if len(agent_responses) == 1 else f"**Rovo Dev:**\n{chr(10).join(agent_responses)}"
 
 
+_server_start_time = datetime.now()
+
+
+@server.tool()
+async def health(ctx: Context = None) -> str:
+    """Health check endpoint. Returns server status, version, and uptime."""
+    uptime = (datetime.now() - _server_start_time).total_seconds()
+    return json.dumps({
+        "status": "healthy",
+        "version": "0.5.0",
+        "uptime_seconds": round(uptime, 1),
+        "enabled_subagents": sorted(enabled_subagents) if enabled_subagents else [],
+        "timestamp": datetime.now().isoformat(),
+    })
+
+
 # Tool definitions
 @server.tool()
 async def check_codex_availability(ctx: Context = None) -> str:
