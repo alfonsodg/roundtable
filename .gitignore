@@ -1,3 +1,33 @@
+# Environment & secrets
+.env
+.env.*
+!.env.example
+REMOTE.md
+
+# AI agents & copilot — NEVER track
+AGENTS.md
+.github/copilot-instructions.md
+.github/copilot*.md
+.copilot/
+.kiro/
+.cursor/
+.aider*
+.continue/
+.cline/
+.roo/
+.windsurf/
+.augment*
+codex.md
+claude.md
+CLAUDE.md
+.claude/
+
+# Debug & screenshots — NEVER track
+debug/
+
+# Reference docs — NEVER track
+reference/
+
 # Python
 __pycache__/
 *.py[cod]
@@ -17,39 +47,51 @@ sdist/
 var/
 wheels/
 *.egg-info/
-.installed.cfg
 *.egg
-
-# Testing
+.installed.cfg
+pip-log.txt
+.mypy_cache/
+.ruff_cache/
 .pytest_cache/
 .coverage
 .coverage.*
 htmlcov/
-.tox/
-.nox/
 coverage.xml
 *.cover
-
-# Virtual environments
+.tox/
+.nox/
+.venv/
 venv/
-ENV/
 env/
-.venv
+ENV/
 
-# IDEs
-.vscode/
+# IDE & OS
 .idea/
+.vscode/
 *.swp
 *.swo
 *~
-
-# OS
 .DS_Store
 Thumbs.db
+Desktop.ini
+.directory
 
-# Logs
+# Logs & temp
 *.log
-.juno_task/
+tmp/
+.cache/
+*.tmp
+*.bak
+*.orig
 
-# MCP
+# Docker (local)
+docker-compose.override.yml
+
+# Databases (local)
+*.sqlite3
+*.db
+
+# Project-specific
+.juno_task/
 .roundtable/
+.benchmarks/
